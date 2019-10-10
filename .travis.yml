@@ -1,0 +1,23 @@
+dist: bionic
+sudo: required
+
+language: c
+
+before_install:
+    - cat /etc/apt/apt.conf.d/99-travis-apt-proxy
+    - sudo apt-get update -qq
+
+matrix:
+  fast_finish: true
+branches:
+  only:
+    - master
+    - develop
+    - /^release\/.*$/
+
+compiler:
+  - gcc
+  - clang
+script:
+  - cat /etc/apt/apt.conf.d/99-travis-apt-proxy
+
